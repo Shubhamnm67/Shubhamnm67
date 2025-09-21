@@ -12,16 +12,19 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { auth } from '@/lib/firebase/client';
 
-export function Header() {
-  // Mock authentication state
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export function Header({ initialUser, isAdmin }: { initialUser: User | null; isAdmin: boolean }) {
+  const [user, setUser] = useState(initialUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // Prevent hydration errors
   useEffect(() => {
-    // In a real app, you'd check for a token or session here
-    setIsLoggedIn(false); 
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
   }, []);
 
   return (
@@ -50,13 +53,13 @@ export function Header() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input placeholder="Search anime..." className="pl-9 w-40 md:w-64" />
           </div>
-          {isLoggedIn ? (
+          {user ? (
             <>
               <Button variant="ghost" size="icon">
                 <Bell className="h-5 w-5" />
                 <span className="sr-only">Notifications</span>
               </Button>
-              <UserNav />
+              <UserNav user={user} isAdmin={isAdmin} />
             </>
           ) : (
              <Button asChild className="hidden sm:inline-flex">
@@ -78,7 +81,7 @@ export function Header() {
                    <Link href="/" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Home</Link>
                    <Link href="/search" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Discover</Link>
                 </nav>
-                {!isLoggedIn && (
+                {!user && (
                   <Button asChild className="mt-4">
                     <Link href="/login">Login</Link>
                   </Button>

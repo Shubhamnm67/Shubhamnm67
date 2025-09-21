@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import {
   Card,
   CardContent,
@@ -23,6 +22,11 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { useFormStatus } from 'react-dom';
+import { login, signup } from '@/lib/auth/actions';
+import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
+import { Loader2 } from 'lucide-react';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email.' }),
@@ -33,7 +37,19 @@ type AuthFormProps = {
   type: 'login' | 'signup';
 };
 
+function SubmitButton({ isLogin }: { isLogin: boolean }) {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" className="w-full mt-2" disabled={pending}>
+       {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+      {isLogin ? 'Sign in' : 'Create account'}
+    </Button>
+  );
+}
+
 export function AuthForm({ type }: AuthFormProps) {
+  const router = useRouter();
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,82 +58,72 @@ export function AuthForm({ type }: AuthFormProps) {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // In a real app, you would handle Firebase authentication here
-    console.log(values);
-    alert('Authentication logic not implemented.');
-  }
-
   const isLogin = type === 'login';
+
+  const formAction = async (formData: FormData) => {
+    const action = isLogin ? login : signup;
+    const result = await action(formData);
+    if (result?.error) {
+      toast({
+        variant: 'destructive',
+        title: 'Authentication Error',
+        description: result.error,
+      });
+    } else {
+       toast({
+        title: isLogin ? 'Login Successful' : 'Account Created',
+        description: isLogin ? "Welcome back!" : "You have successfully signed up.",
+      });
+      router.push('/');
+    }
+  };
 
   return (
     <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle className="text-2xl font-headline">
-          {isLogin ? 'Welcome Back' : 'Create an Account'}
-        </CardTitle>
-        <CardDescription>
-          {isLogin ? 'Enter your email below to login to your account.' : 'Enter your details to create a new account.'}
-        </CardDescription>
-      </CardHeader>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <CardContent className="grid gap-4">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="m@example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+       <form action={formAction}>
+        <CardHeader>
+          <CardTitle className="text-2xl font-headline">
+            {isLogin ? 'Welcome Back' : 'Create an Account'}
+          </CardTitle>
+          <CardDescription>
+            {isLogin ? 'Enter your email below to login to your account.' : 'Enter your details to create a new account.'}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" name="email" type="email" placeholder="m@example.com" required />
+          </div>
+          <div className="grid gap-2">
+            <div className="flex items-center">
+              <Label htmlFor="password">Password</Label>
+              {isLogin && (
+                <Link
+                  href="#"
+                  className="ml-auto inline-block text-sm underline"
+                >
+                  Forgot your password?
+                </Link>
               )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <div className="flex items-center">
-                    <FormLabel>Password</FormLabel>
-                    {isLogin && (
-                      <Link
-                        href="#"
-                        className="ml-auto inline-block text-sm underline"
-                      >
-                        Forgot your password?
-                      </Link>
-                    )}
-                  </div>
-                  <FormControl>
-                    <Input type="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" className="w-full mt-2">
-              {isLogin ? 'Sign in' : 'Create account'}
-            </Button>
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">
-                  Or continue with
-                </span>
-              </div>
             </div>
-            <Button variant="outline" className="w-full">
-              Google
-            </Button>
-          </CardContent>
-        </form>
-      </Form>
+            <Input id="password" name="password" type="password" required />
+          </div>
+           <SubmitButton isLogin={isLogin} />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <Button variant="outline" className="w-full" type="button">
+            Google
+          </Button>
+        </CardContent>
+      </form>
       <CardFooter className="text-center text-sm text-muted-foreground">
         {isLogin ? (
           <p>
