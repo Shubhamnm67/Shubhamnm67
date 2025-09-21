@@ -34,6 +34,10 @@ const generateVideoFlow = ai.defineFlow(
     outputSchema: GenerateVideoOutputSchema,
   },
   async (input) => {
+    // This flow is no longer used by the application UI but is kept for potential future use.
+    // If you want to re-enable it, you would need to modify the UI and server action
+    // in /src/app/admin/generate-video/
+    
     let { operation } = await ai.generate({
       model: googleAI.model('veo-2.0-generate-001'),
       prompt: input.prompt,
@@ -63,8 +67,6 @@ const generateVideoFlow = ai.defineFlow(
       throw new Error('Failed to find the generated video in the operation result.');
     }
 
-    // The media URL from the Veo API is temporary and requires the API key for access.
-    // We fetch it and convert to a data URI to send to the client.
     const fetch = (await import('node-fetch')).default;
     const videoResponse = await fetch(
       `${videoPart.media.url}&key=${process.env.GEMINI_API_KEY}`

@@ -42,16 +42,16 @@ export default function AdminDashboardPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Generate Video</CardTitle>
+            <CardTitle>Upload Video</CardTitle>
             <CardDescription>
-              Use AI to generate a short video clip for an episode.
+              Upload a video file for an anime episode.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Button asChild>
               <Link href="/admin/generate-video">
                 <Video className="mr-2 h-4 w-4" />
-                Go to Generator
+                Go to Upload
               </Link>
             </Button>
           </CardContent>
