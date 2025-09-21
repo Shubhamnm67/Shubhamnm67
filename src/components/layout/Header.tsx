@@ -53,7 +53,7 @@ export function Header() {
             <span className="sr-only">Notifications</span>
           </Button>
 
-          <Sheet open={isMenuOpen} onOpenChange={setIsMenuMpen}>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu />
