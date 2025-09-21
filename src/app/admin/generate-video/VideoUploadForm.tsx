@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -30,7 +31,7 @@ function SubmitButton() {
 
 export function VideoUploadForm({ handleVideoUpload, animeList }: VideoUploadFormProps) {
   const initialState = { videoUrl: null, error: null };
-  const [state, formAction] = useFormState(handleVideoUpload, initialState);
+  const [state, formAction] = useActionState(handleVideoUpload, initialState);
 
   return (
     <Card>
