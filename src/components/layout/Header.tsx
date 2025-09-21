@@ -3,14 +3,20 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, Bell } from 'lucide-react';
+import { Search, Bell, Menu } from 'lucide-react';
 import { Logo } from './Logo';
 import { UserNav } from '../auth/UserNav';
 import { useState, useEffect } from 'react';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 export function Header() {
   // Mock authentication state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   // Prevent hydration errors
   useEffect(() => {
@@ -40,12 +46,18 @@ export function Header() {
               href="/admin/moderate"
               className="transition-colors hover:text-foreground"
             >
-              Admin
+              Moderate
+            </Link>
+             <Link
+              href="/admin/upload"
+              className="transition-colors hover:text-foreground"
+            >
+              Upload
             </Link>
           </nav>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           <div className="relative hidden sm:block">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input placeholder="Search anime..." className="pl-9 w-40 md:w-64" />
@@ -59,10 +71,36 @@ export function Header() {
               <UserNav />
             </>
           ) : (
-             <Button asChild>
+             <Button asChild className="hidden sm:inline-flex">
                 <Link href="/login">Login</Link>
              </Button>
           )}
+
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+              <div className="flex flex-col gap-4 py-8">
+                <Logo className="mb-4" />
+                 <nav className="flex flex-col gap-4 text-lg font-medium">
+                   <Link href="/" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Home</Link>
+                   <Link href="/search" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Discover</Link>
+                   <Link href="/admin/moderate" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Moderate</Link>
+                   <Link href="/admin/upload" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Upload</Link>
+                </nav>
+                {!isLoggedIn && (
+                  <Button asChild className="mt-4">
+                    <Link href="/login">Login</Link>
+                  </Button>
+                )}
+              </div>
+            </SheetContent>
+          </Sheet>
+
         </div>
       </div>
     </header>
