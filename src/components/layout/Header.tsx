@@ -42,18 +42,6 @@ export function Header() {
             >
               Discover
             </Link>
-            <Link
-              href="/admin/moderate"
-              className="transition-colors hover:text-foreground"
-            >
-              Moderate
-            </Link>
-             <Link
-              href="/admin/upload"
-              className="transition-colors hover:text-foreground"
-            >
-              Upload
-            </Link>
           </nav>
         </div>
 
@@ -89,8 +77,6 @@ export function Header() {
                  <nav className="flex flex-col gap-4 text-lg font-medium">
                    <Link href="/" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Home</Link>
                    <Link href="/search" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Discover</Link>
-                   <Link href="/admin/moderate" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Moderate</Link>
-                   <Link href="/admin/upload" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Upload</Link>
                 </nav>
                 {!isLoggedIn && (
                   <Button asChild className="mt-4">
