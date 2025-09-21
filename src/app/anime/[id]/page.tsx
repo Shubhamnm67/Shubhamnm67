@@ -7,7 +7,6 @@ import { PlayCircle, Star, PlusCircle } from 'lucide-react';
 import { EpisodeList } from '@/components/anime/EpisodeList';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { getAuthenticatedUser, isAdmin } from '@/lib/auth/server';
 
 type AnimePageProps = {
   params: {
@@ -17,8 +16,6 @@ type AnimePageProps = {
 
 export default async function AnimePage({ params }: AnimePageProps) {
   const anime = animeData.find((a) => a.id === params.id);
-  const user = await getAuthenticatedUser();
-  const admin = await isAdmin();
 
   if (!anime) {
     notFound();
@@ -26,7 +23,7 @@ export default async function AnimePage({ params }: AnimePageProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header initialUser={user} isAdmin={admin} />
+      <Header />
       <main className="flex-grow">
         <div>
           <div className="relative h-[40vh] md:h-[50vh] w-full">

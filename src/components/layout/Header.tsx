@@ -3,30 +3,18 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, Bell, Menu } from 'lucide-react';
+import { Search, Bell, Menu, Package } from 'lucide-react';
 import { Logo } from './Logo';
-import { UserNav } from '../auth/UserNav';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '@/lib/firebase/client';
 
-export function Header({ initialUser, isAdmin }: { initialUser: User | null; isAdmin: boolean }) {
-  const [user, setUser] = useState(initialUser);
+export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
@@ -45,6 +33,13 @@ export function Header({ initialUser, isAdmin }: { initialUser: User | null; isA
             >
               Discover
             </Link>
+            <Link
+                href="/admin"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <Package className="h-4 w-4" />
+                Admin
+              </Link>
           </nav>
         </div>
 
@@ -53,21 +48,12 @@ export function Header({ initialUser, isAdmin }: { initialUser: User | null; isA
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input placeholder="Search anime..." className="pl-9 w-40 md:w-64" />
           </div>
-          {user ? (
-            <>
-              <Button variant="ghost" size="icon">
-                <Bell className="h-5 w-5" />
-                <span className="sr-only">Notifications</span>
-              </Button>
-              <UserNav user={user} isAdmin={isAdmin} />
-            </>
-          ) : (
-             <Button asChild className="hidden sm:inline-flex">
-                <Link href="/login">Login</Link>
-             </Button>
-          )}
+          <Button variant="ghost" size="icon">
+            <Bell className="h-5 w-5" />
+            <span className="sr-only">Notifications</span>
+          </Button>
 
-          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuMpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu />
@@ -80,12 +66,8 @@ export function Header({ initialUser, isAdmin }: { initialUser: User | null; isA
                  <nav className="flex flex-col gap-4 text-lg font-medium">
                    <Link href="/" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Home</Link>
                    <Link href="/search" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Discover</Link>
+                   <Link href="/admin" className="transition-colors hover:text-foreground" onClick={() => setIsMenuOpen(false)}>Admin</Link>
                 </nav>
-                {!user && (
-                  <Button asChild className="mt-4">
-                    <Link href="/login">Login</Link>
-                  </Button>
-                )}
               </div>
             </SheetContent>
           </Sheet>

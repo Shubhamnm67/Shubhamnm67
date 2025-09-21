@@ -4,19 +4,15 @@ import { AnimeCarousel } from '@/components/anime/AnimeCarousel';
 import { Clapperboard, Flame } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { getAuthenticatedUser, isAdmin } from '@/lib/auth/server';
 
 export default async function Home() {
   const featuredAnime = animeData[0];
   const trendingAnime = animeData.slice(1, 7);
   const newReleases = animeData.slice(7);
 
-  const user = await getAuthenticatedUser();
-  const admin = await isAdmin();
-
   return (
     <div className="min-h-screen flex flex-col">
-      <Header initialUser={user} isAdmin={admin} />
+      <Header />
       <main className="flex-grow">
         <div className="space-y-16 pb-16">
           <HeroSection anime={featuredAnime} />

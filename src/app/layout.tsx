@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
-import { getAuthenticatedUser } from '@/lib/auth/server';
 
 export const metadata: Metadata = {
   title: 'Scythe Net',
@@ -14,7 +13,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await getAuthenticatedUser();
 
   return (
     <html lang="en" className="dark">
