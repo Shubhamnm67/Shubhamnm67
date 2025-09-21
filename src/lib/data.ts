@@ -1,0 +1,153 @@
+import type { Anime } from '@/lib/types';
+
+export const animeData: Anime[] = [
+  {
+    id: 'cyber-pulse-phantom-pain',
+    title: 'Cyber-Pulse: Phantom Pain',
+    description:
+      'In the neon-drenched metropolis of Neo-Kyoto 2142, a reclusive hacker discovers a corporate conspiracy that could shatter the fragile peace. Hunted by cybernetically enhanced assassins, he must rely on his wits and a mysterious phantom ally to expose the truth.',
+    posterUrl: 'https://picsum.photos/seed/anime1/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop1/1280/720',
+    genres: ['Cyberpunk', 'Action', 'Mystery'],
+    rating: 9.2,
+    type: 'Series',
+    episodes: Array.from({ length: 12 }, (_, i) => ({
+      id: `e${i + 1}`,
+      title: `Episode ${i + 1}: The Ghost in the Code`,
+      thumbnailUrl: `https://picsum.photos/seed/ep${i + 1}/400/225`,
+      duration: '24:30',
+    })),
+  },
+  {
+    id: 'celestial-odyssey',
+    title: 'Celestial Odyssey',
+    description:
+      'A young cartographer from a forgotten star system embarks on a quest to map the uncharted galaxies. She discovers ancient celestial beings, forgotten technologies, and a love that transcends space and time.',
+    posterUrl: 'https://picsum.photos/seed/anime2/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop2/1280/720',
+    genres: ['Sci-Fi', 'Adventure', 'Romance'],
+    rating: 8.8,
+    type: 'Series',
+    episodes: [],
+  },
+  {
+    id: 'the-last-spellcaster',
+    title: 'The Last Spellcaster',
+    description:
+      'In a world where magic is fading, a young girl discovers she is the last one with the power to wield ancient spells. She must journey to the heart of the dying world to reignite the magic before it vanishes forever.',
+    posterUrl: 'https://picsum.photos/seed/anime3/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop3/1280/720',
+    genres: ['Fantasy', 'Magic', 'Adventure'],
+    rating: 8.5,
+    type: 'Movie',
+    episodes: [],
+  },
+  {
+    id: 'tokyo-neon-drift',
+    title: 'Tokyo Neon Drift',
+    description:
+      'By day, he is a quiet mechanic. By night, he is the undisputed king of Neo-Tokyo\'s underground drift racing scene. But when a new challenger with a dark past emerges, the race is for more than just victory.',
+    posterUrl: 'https://picsum.photos/seed/anime4/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop4/1280/720',
+    genres: ['Action', 'Sports', 'Drama'],
+    rating: 9.0,
+    type: 'Series',
+    episodes: [],
+  },
+  {
+    id: 'shogun-of-the-stars',
+    title: 'Shogun of the Stars',
+    description:
+      'A disgraced samurai is reborn in a galaxy-spanning empire. Armed with his code of honor and a laser katana, he must navigate political intrigue and interstellar warfare to protect the innocent princess of a doomed planet.',
+    posterUrl: 'https://picsum.photos/seed/anime5/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop5/1280/720',
+    genres: ['Sci-Fi', 'Samurai', 'Space Opera'],
+    rating: 8.9,
+    type: 'Series',
+    episodes: [],
+  },
+  {
+    id: 'culinary-clash',
+    title: 'Culinary Clash!',
+    description:
+      'A talented young chef from a small town enrolls in the world\'s most prestigious culinary academy. He must battle his rivals in epic cooking showdowns to prove that heart and soul are the secret ingredients to any great dish.',
+    posterUrl: 'https://picsum.photos/seed/anime6/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop6/1280/720',
+    genres: ['Slice of Life', 'Comedy', 'Shonen'],
+    rating: 8.2,
+    type: 'Series',
+    episodes: [],
+  },
+  {
+    id: 'echoes-of-etheria',
+    title: 'Echoes of Etheria',
+    description:
+      'A bard travels the mystical lands of Etheria, collecting forgotten songs and stories. Her music has the power to heal old wounds and reveal the hidden history of a world scarred by a forgotten war between gods and mortals.',
+    posterUrl: 'https://picsum.photos/seed/anime7/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop7/1280/720',
+    genres: ['Fantasy', 'Music', 'Slice of Life'],
+    rating: 8.6,
+    type: 'Movie',
+    episodes: [],
+  },
+  {
+    id: 'dimension-detective',
+    title: 'Dimension Detective',
+    description:
+      'A hardboiled detective in a noir city discovers a device that lets him jump between parallel universes. He uses this power to solve impossible crimes, but each jump takes a toll on his reality and his sanity.',
+    posterUrl: 'https://picsum.photos/seed/anime8/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop8/1280/720',
+    genres: ['Noir', 'Sci-Fi', 'Mystery'],
+    rating: 9.1,
+    type: 'Series',
+    episodes: [],
+  },
+  {
+    id: 'mecha-coliseum',
+    title: 'Mecha Coliseum',
+    description:
+      'In a future dominated by giant robot combat, a young pilot from the slums joins the high-stakes Mecha Coliseum league. With a salvaged and customized mech, she aims for the championship to win a better life for her family.',
+    posterUrl: 'https://picsum.photos/seed/anime9/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop9/1280/720',
+    genres: ['Mecha', 'Action', 'Tournament'],
+    rating: 8.7,
+    type: 'Series',
+    episodes: [],
+  },
+  {
+    id: 'sakura-in-the-wind',
+    title: 'Sakura in the Wind',
+    description:
+      'A poignant story about two high school students who connect over their shared love for classic literature. Their relationship blossoms through handwritten letters and stolen moments in the school library, set against the backdrop of changing seasons.',
+    posterUrl: 'https://picsum.photos/seed/anime10/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop10/1280/720',
+    genres: ['Romance', 'Slice of Life', 'School'],
+    rating: 8.4,
+    type: 'Movie',
+    episodes: [],
+  },
+  {
+    id: 'abyssal-guardians',
+    title: 'Abyssal Guardians',
+    description:
+      'A team of elite divers equipped with advanced underwater suits protect the last submerged city on Earth from monstrous sea creatures that emerged from the deep abyss after a global cataclysm.',
+    posterUrl: 'https://picsum.photos/seed/anime11/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop11/1280/720',
+    genres: ['Action', 'Sci-Fi', 'Horror'],
+    rating: 8.3,
+    type: 'Series',
+    episodes: [],
+  },
+  {
+    id: 'spirit-of-the-blade',
+    title: 'Spirit of the Blade',
+    description:
+      'An ancient demon is sealed within a legendary katana. A young blacksmith\'s apprentice accidentally awakens the spirit and must now learn to wield its immense power while resisting its corrupting influence.',
+    posterUrl: 'https://picsum.photos/seed/anime12/400/600',
+    backdropUrl: 'https://picsum.photos/seed/backdrop12/1280/720',
+    genres: ['Supernatural', 'Action', 'Fantasy'],
+    rating: 8.8,
+    type: 'Series',
+    episodes: [],
+  },
+];

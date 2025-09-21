@@ -1,3 +1,148 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "anime-poster-1",
+      "description": "Poster for Cyber-Pulse: Phantom Pain",
+      "imageUrl": "https://picsum.photos/seed/anime1/400/600",
+      "imageHint": "anime poster"
+    },
+    {
+      "id": "anime-backdrop-1",
+      "description": "Backdrop for Cyber-Pulse: Phantom Pain",
+      "imageUrl": "https://picsum.photos/seed/backdrop1/1280/720",
+      "imageHint": "anime city"
+    },
+    {
+      "id": "anime-poster-2",
+      "description": "Poster for Celestial Odyssey",
+      "imageUrl": "https://picsum.photos/seed/anime2/400/600",
+      "imageHint": "space anime"
+    },
+    {
+      "id": "anime-backdrop-2",
+      "description": "Backdrop for Celestial Odyssey",
+      "imageUrl": "https://picsum.photos/seed/backdrop2/1280/720",
+      "imageHint": "galaxy stars"
+    },
+    {
+      "id": "anime-poster-3",
+      "description": "Poster for The Last Spellcaster",
+      "imageUrl": "https://picsum.photos/seed/anime3/400/600",
+      "imageHint": "fantasy magic"
+    },
+    {
+      "id": "anime-backdrop-3",
+      "description": "Backdrop for The Last Spellcaster",
+      "imageUrl": "https://picsum.photos/seed/backdrop3/1280/720",
+      "imageHint": "fantasy landscape"
+    },
+    {
+      "id": "anime-poster-4",
+      "description": "Poster for Tokyo Neon Drift",
+      "imageUrl": "https://picsum.photos/seed/anime4/400/600",
+      "imageHint": "racing car"
+    },
+    {
+      "id": "anime-backdrop-4",
+      "description": "Backdrop for Tokyo Neon Drift",
+      "imageUrl": "https://picsum.photos/seed/backdrop4/1280/720",
+      "imageHint": "tokyo night"
+    },
+    {
+      "id": "anime-poster-5",
+      "description": "Poster for Shogun of the Stars",
+      "imageUrl": "https://picsum.photos/seed/anime5/400/600",
+      "imageHint": "space samurai"
+    },
+    {
+      "id": "anime-backdrop-5",
+      "description": "Backdrop for Shogun of the Stars",
+      "imageUrl": "https://picsum.photos/seed/backdrop5/1280/720",
+      "imageHint": "space battle"
+    },
+    {
+      "id": "anime-poster-6",
+      "description": "Poster for Culinary Clash!",
+      "imageUrl": "https://picsum.photos/seed/anime6/400/600",
+      "imageHint": "anime food"
+    },
+    {
+      "id": "anime-backdrop-6",
+      "description": "Backdrop for Culinary Clash!",
+      "imageUrl": "https://picsum.photos/seed/backdrop6/1280/720",
+      "imageHint": "kitchen restaurant"
+    },
+    {
+      "id": "anime-poster-7",
+      "description": "Poster for Echoes of Etheria",
+      "imageUrl": "https://picsum.photos/seed/anime7/400/600",
+      "imageHint": "anime music"
+    },
+    {
+      "id": "anime-backdrop-7",
+      "description": "Backdrop for Echoes of Etheria",
+      "imageUrl": "https://picsum.photos/seed/backdrop7/1280/720",
+      "imageHint": "fantasy forest"
+    },
+    {
+      "id": "anime-poster-8",
+      "description": "Poster for Dimension Detective",
+      "imageUrl": "https://picsum.photos/seed/anime8/400/600",
+      "imageHint": "noir detective"
+    },
+    {
+      "id": "anime-backdrop-8",
+      "description": "Backdrop for Dimension Detective",
+      "imageUrl": "https://picsum.photos/seed/backdrop8/1280/720",
+      "imageHint": "dark city"
+    },
+    {
+      "id": "anime-poster-9",
+      "description": "Poster for Mecha Coliseum",
+      "imageUrl": "https://picsum.photos/seed/anime9/400/600",
+      "imageHint": "giant robot"
+    },
+    {
+      "id": "anime-backdrop-9",
+      "description": "Backdrop for Mecha Coliseum",
+      "imageUrl": "https://picsum.photos/seed/backdrop9/1280/720",
+      "imageHint": "robot fight"
+    },
+    {
+      "id": "anime-poster-10",
+      "description": "Poster for Sakura in the Wind",
+      "imageUrl": "https://picsum.photos/seed/anime10/400/600",
+      "imageHint": "anime romance"
+    },
+    {
+      "id": "anime-backdrop-10",
+      "description": "Backdrop for Sakura in the Wind",
+      "imageUrl": "https://picsum.photos/seed/backdrop10/1280/720",
+      "imageHint": "sakura trees"
+    },
+    {
+      "id": "anime-poster-11",
+      "description": "Poster for Abyssal Guardians",
+      "imageUrl": "https://picsum.photos/seed/anime11/400/600",
+      "imageHint": "underwater monster"
+    },
+    {
+      "id": "anime-backdrop-11",
+      "description": "Backdrop for Abyssal Guardians",
+      "imageUrl": "https://picsum.photos/seed/backdrop11/1280/720",
+      "imageHint": "deep sea"
+    },
+    {
+      "id": "anime-poster-12",
+      "description": "Poster for Spirit of the Blade",
+      "imageUrl": "https://picsum.photos/seed/anime12/400/600",
+      "imageHint": "samurai sword"
+    },
+    {
+      "id": "anime-backdrop-12",
+      "description": "Backdrop for Spirit of the Blade",
+      "imageUrl": "https://picsum.photos/seed/backdrop12/1280/720",
+      "imageHint": "ancient temple"
+    }
+  ]
 }
