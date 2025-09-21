@@ -4,6 +4,7 @@ import {
   Home,
   ShieldCheck,
   UploadCloud,
+  Video,
 } from 'lucide-react';
 
 export default function AdminLayout({
@@ -43,6 +44,13 @@ export default function AdminLayout({
               >
                 <ShieldCheck className="h-4 w-4" />
                 Content Moderation
+              </Link>
+               <Link
+                href="/admin/generate-video"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <Video className="h-4 w-4" />
+                Generate Video
               </Link>
             </nav>
           </div>

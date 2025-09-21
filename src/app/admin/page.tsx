@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { UploadCloud, ShieldCheck } from 'lucide-react';
+import { UploadCloud, ShieldCheck, Video } from 'lucide-react';
 
 export default function AdminDashboardPage() {
   return (
     <div>
       <h1 className="text-3xl font-bold font-headline mb-6">Admin Dashboard</h1>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader>
             <CardTitle>Upload New Anime</CardTitle>
@@ -36,6 +36,22 @@ export default function AdminDashboardPage() {
               <Link href="/admin/moderate">
                 <ShieldCheck className="mr-2 h-4 w-4" />
                 Go to Moderation
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Generate Video</CardTitle>
+            <CardDescription>
+              Use AI to generate a short video clip for an episode.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild>
+              <Link href="/admin/generate-video">
+                <Video className="mr-2 h-4 w-4" />
+                Go to Generator
               </Link>
             </Button>
           </CardContent>
