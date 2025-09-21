@@ -32,7 +32,7 @@ export function HeroSection({ anime }: HeroSectionProps) {
           </h1>
           <div className="flex flex-wrap gap-2">
             {anime.genres.map((genre) => (
-              <Badge key={genre} variant="outline" className="text-white border-white/50 backdrop-blur-sm">
+              <Badge key={genre} variant="secondary">
                 {genre}
               </Badge>
             ))}
