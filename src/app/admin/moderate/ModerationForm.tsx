@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -29,7 +30,7 @@ function SubmitButton() {
 
 export function ModerationForm({ handleModeration }: ModerationFormProps) {
   const initialState = { result: null, error: null };
-  const [state, formAction] = useFormState(handleModeration, initialState);
+  const [state, formAction] = useActionState(handleModeration, initialState);
 
   return (
     <Card>
