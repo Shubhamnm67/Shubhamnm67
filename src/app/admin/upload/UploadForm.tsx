@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState, useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -42,7 +42,7 @@ function SubmitButton() {
 
 export function UploadForm({ handleAddAnime }: UploadFormProps) {
   const initialState = { message: null, error: null };
-  const [state, formAction] = useFormState(handleAddAnime, initialState);
+  const [state, formAction] = useActionState(handleAddAnime, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
